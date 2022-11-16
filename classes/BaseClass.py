@@ -159,6 +159,8 @@ class BaseClass:
         if count_result:
             result = [item.to_dict() for item in query.all()]
 
+        return result
+
     def _new(self, record):
         """
         Создание новой записи в БД
