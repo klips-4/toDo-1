@@ -180,7 +180,7 @@ class BaseClass:
         :param record: данные передаваемые в модель
         :return: Обновленная модель
         """
-        model = self._session.query(self.get_model()) \
+        model = self._session.query(self._get_model()) \
             .get(record.get('id'))
 
         if model:

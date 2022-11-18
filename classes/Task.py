@@ -10,13 +10,13 @@ class Task(BaseClass):
         return TaskModel() if new_model else TaskModel
 
     def _prepare_query_filter(self, query, filter_params):
-        if filter_params:
+        if not filter_params:
             filter_params = {}
 
         if filter_params.get('onlyActive'):
-            query = query.where(self.get_model().date_completed == None)
+            query = query.where(self._get_model().date_completed == None)
 
         if filter_params.get('onlyCompleted') and not filter_params.get('onlyActive'):
-            query = query.where(self.get_model().date_completed != None)
+            query = query.where(self._get_model().date_completed != None)
 
         return query
